@@ -1,1 +1,1 @@
-{"tfjsVersion":"1.3.1","tmVersion":"2.4.4","packageVersion":"0.8.4-alpha2","packageName":"@teachablemachine/image","timeStamp":"2021-11-07T06:41:18.095Z","userMetadata":{},"modelName":"tm-my-image-model","labels":["benzen","methanol","phenol","noiz","Acetic acid"],"imageSize":224}
+{"tfjsVersion":"1.3.1","tmVersion":"2.4.4","packageVersion":"0.8.4-alpha2","packageName":"@teachablemachine/image","timeStamp":"2021-11-10T10:47:00.439Z","userMetadata":{},"modelName":"tm-my-image-model","labels":["noiz","methanol","aceticacid","benzen","phenol"],"imageSize":224}

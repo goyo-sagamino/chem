@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="commonStyle.css">
+    <title id = "pageTitle"></title>
+</head>
+<body>
+    <div id = "header">
+        <h1>試薬の使用登録｜</h1>
+        <h2 class = "rnJPEn"></h2>
+    </div>
+
+    <div class = "container">
+        <div class = "leftside"></div>
+
+        <div class = "main">
+            <div id = "menu">
+                <a id = "MSDS">MSDS</a>
+                <a id = "suppliers" href="">Suppliers</a>
+                <a id = "reagents" href="">試薬一覧</a>
+                <a id = "return" href="">構造認識に戻る</a>
+            </div>
+
+            <div id = "structureAndRegistration">
+                <div id = "structure">
+                    <div class = "image">
+                        <div class = "marginLeft"></div>
+                        <img src= "methanol.PNG" alt="NoImage" id = "picstruc">
+                        <div class = "marginRight"></div>
+                    </div>
+
+                    <h2 class = "titles rnJPEn"></h2>
+                    <p id = "alter"></p>
+                    <p id = "fml"></p>
+                </div>
+        
+                <div id = "registration">
+                    <h2 class = "titles">使用登録</h2>
+                    <p><b>日付</b></p>
+                    <p><b>使用者名</b></p>
+                    <p><b>使用前重量</b></p>
+                    <p><b>使用後重量</b></p>
+                </div>
+
+                <div id = "place">
+                    <h2 class = "titles">保管場所</h2>
+                    <p id = "placeText"></p>
+                </div>
+            </div>
+        
+            <div id = "GHSandProperties">
+                <div id = "GHS">
+                    <h2 class = "titles">GHS分類</h2>
+                    <h3>物理化学的危険性</h3>
+                    <h3>健康に対する有害性</h3>
+                    <h3>環境に対する有害性</h3>
+                </div>
+                
+                <div id = "properties">
+                    <h2 class = "titles">物理・化学的性質</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class = "rightside"></div>
+    </div>
+    <script type = "text/javascript">
+        var query = location.search.split("=")[1];
+        
+        namesJP = ["メタノール","酢酸","ベンゼン","フェノール"];
+        namesEn = ["Methanol","Acetic acid","Benzen","Phenol"];
+        alterNames = ["メチルアルコール(Methylac)","メタン酸(Methanoic acid)","ベンゼン(Benzen)","ヒドロキシベンゼン(Hydroxybenzen)"];
+        formulae = ["CH<sub>3</sub>OH","CH<sub>3</sub>COOH","C<sub>6</sub>H<sub>6</sub>","C<sub>6</sub>H<sub>5</sub>OH"];
+        structures = ["methanol.PNG","aceticacid.PNG","benzen.PNG","phenol.PNG"];
+        msds = ["http://www.st.rim.or.jp/~shw/MSDS/13405350.pdf",
+                "http://products.kanto.co.jp/products/denshi/pdf/denshi_sdsjaceticacid01.pdf",
+                "https://labchem-wako.fujifilm.com/sds/W01W0102-0071JGHEJP.pdf",
+                "http://www.kokusan-chem.co.jp/sds/D004081-1.pdf"];
+        places = ["2203室A1-1-低級アルコール類", "2203室A2-3-カルボン酸とその誘導体", "2203室B2-2-芳香族類", "2203室B3-3-芳香族誘導体"]
+
+        nameJP = namesJP[query];
+        nameEn = namesEn[query];
+        alterName = alterNames[query];
+        formula = formulae[query];
+        structure = structures[query];
+        msds = msds[query]
+        place = places[query]
+
+        var titleclasses = document.getElementsByClassName("rnJPEn");
+        for (var i = 0; i < titleclasses.length; i ++){
+            titleclasses[i].innerHTML = nameJP + ":" + nameEn;
+        }
+
+        document.getElementById("pageTitle").innerHTML = nameJP + "：構造式に基づく試薬管理システム";
+        document.getElementById("alter").innerHTML = "<b>別名</b> : " + alterName;
+        document.getElementById("fml").innerHTML = "<b>示性式</b> : " + formula;
+        document.getElementById("placeText").innerHTML = "<b>" + place + "</b>";
+        document.getElementById("picstruc").src = structure;
+        document.getElementById("MSDS").href = msds;
+
+    </script>
+</body>
+</html>
