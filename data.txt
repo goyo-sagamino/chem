@@ -1,3 +1,11 @@
-aaa
-bbb
-vccc
+メタノール,酢酸,ベンゼン,フェノール
+Methanol,Acetic acid,Benzen,Phenol
+メチルアルコール(Methylac),メタン酸(Methanoic acid),ベンゼン(Benzen),ヒドロキシベンゼン(Hydroxybenzen)
+CH<sub>3</sub>OH,CH<sub>3</sub>COOH,C<sub>6</sub>H<sub>6</sub>,C<sub>6</sub>H<sub>5</sub>OH
+methanol.PNG,aceticacid.PNG,benzen.PNG,phenol.PNG
+http://www.st.rim.or.jp/~shw/MSDS/13405350.pdf,http://products.kanto.co.jp/products/denshi/pdf/denshi_sdsjaceticacid01.pdf,https://labchem-wako.fujifilm.com/sds/W01W0102-0071JGHEJP.pdf,http://www.kokusan-chem.co.jp/sds/D004081-1.pdf
+2203室A1-1-低級アルコール類, 2203室A2-3-カルボン酸とその誘導体, 2203室B2-2-芳香族類, 2203室B1-3-芳香族誘導体
+引火性液体：区分2<br>自然発火性液体：区分外,引火性液体：区分3<br>自然発火性液体：区分外,引火性液体：区分2<br>自然発火性液体：区分外,引火性液体：区分2<br>自然発火性液体：区分外
+急性毒性（経口）：区分4<br>眼に対する重篤な損傷性・眼刺激性：区分2A<br>生殖毒性：区分1B<br>特定標的臓器毒性（単回ばく露）：区分1（中枢神経系、視覚器、全身毒性）区分3（麻酔作用）<br>特定標的臓器毒性（反復ばく露）：区分1（中枢神経系）,急性毒性（経口）：区分外<br>急性毒性（経皮）：区分4<br>皮膚腐食性・刺激性：区分1A<br>眼に対する重篤な損傷性・眼刺激性：区分1<br>特定標的臓器毒性（単回ばく露）：区分1,急性毒性（経口）：区分4<br>皮膚腐食性・刺激性：区分2<br>眼に対する重篤な損傷性・眼刺激性：区分2A<br>生殖毒性：区分2<br>発がん性：区分1A<br>特定標的臓器毒性（単回ばく露）：区分1（呼吸器系）区分3（麻酔作用）<br>特定標的臓器毒性（反復ばく露）：区分1（中枢神経系）,急性毒性（経口）：区分4<br>急性毒性（経皮）：区分3<br>皮膚腐食性及び刺激性：区分1A<br>眼に対する重篤な損傷性又は眼刺激性：区分1<br>生殖細胞変異原性：区分1B<br>生殖毒性：区分1B<br>特定標的臓器毒性（単回ばく露）：区分1(呼吸器、神経系)<br>特定標的臓器毒性（反復ばく露）：区分1(心血管系、中枢神経系)
+水生環境有害性 短期(急性)：区分外<br>水生環境有害性 長期(慢性)：区分外,水生環境有害性 短期(急性)：区分3<br>水生環境有害性 長期(慢性)：区分外,水生環境有害性 短期(急性)：区分2<br>水生環境有害性 長期(慢性)：区分2,水生環境有害性（急性）：区分2<br>水生環境有害性（長期間）：区分3
+shelfmethanol.PNG,shelfaceticacid.PNG,shelfbenzen.PNG,shelfphenol.PNG

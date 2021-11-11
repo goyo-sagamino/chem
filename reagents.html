@@ -28,7 +28,7 @@
                 <div id = "structure">
                     <div class = "image">
                         <div class = "marginLeft"></div>
-                        <img src= "methanol.PNG" alt="NoImage" id = "picstruc">
+                        <img alt= "NoImage" id = "picstruc">
                         <div class = "marginRight"></div>
                     </div>
 
@@ -48,6 +48,11 @@
                 <div id = "place">
                     <h2 class = "titles">保管場所</h2>
                     <p id = "placeText"></p>
+                    <div class = "image">
+                        <div class = "marginLeft"></div>
+                        <img alt= "NoImage" id = "placeFig">
+                        <div class = "marginRight"></div>
+                    </div>
                 </div>
             </div>
         
@@ -55,12 +60,16 @@
                 <div id = "GHS">
                     <h2 class = "titles">GHS分類</h2>
                     <h3>物理化学的危険性</h3>
+                    <p id = "GHS1"></p>
                     <h3>健康に対する有害性</h3>
+                    <p id = "GHS2"></p>
                     <h3>環境に対する有害性</h3>
+                    <p id = "GHS3"></p>
                 </div>
                 
                 <div id = "properties">
                     <h2 class = "titles">物理・化学的性質</h2>
+                    <p id = "aaa"></p>
                 </div>
             </div>
         </div>
@@ -69,37 +78,56 @@
     </div>
     <script type = "text/javascript">
         var query = location.search.split("=")[1];
-        
-        namesJP = ["メタノール","酢酸","ベンゼン","フェノール"];
-        namesEn = ["Methanol","Acetic acid","Benzen","Phenol"];
-        alterNames = ["メチルアルコール(Methylac)","メタン酸(Methanoic acid)","ベンゼン(Benzen)","ヒドロキシベンゼン(Hydroxybenzen)"];
-        formulae = ["CH<sub>3</sub>OH","CH<sub>3</sub>COOH","C<sub>6</sub>H<sub>6</sub>","C<sub>6</sub>H<sub>5</sub>OH"];
-        structures = ["methanol.PNG","aceticacid.PNG","benzen.PNG","phenol.PNG"];
-        msds = ["http://www.st.rim.or.jp/~shw/MSDS/13405350.pdf",
-                "http://products.kanto.co.jp/products/denshi/pdf/denshi_sdsjaceticacid01.pdf",
-                "https://labchem-wako.fujifilm.com/sds/W01W0102-0071JGHEJP.pdf",
-                "http://www.kokusan-chem.co.jp/sds/D004081-1.pdf"];
-        places = ["2203室A1-1-低級アルコール類", "2203室A2-3-カルボン酸とその誘導体", "2203室B2-2-芳香族類", "2203室B3-3-芳香族誘導体"]
 
-        nameJP = namesJP[query];
-        nameEn = namesEn[query];
-        alterName = alterNames[query];
-        formula = formulae[query];
-        structure = structures[query];
-        msds = msds[query]
-        place = places[query]
+        getTxtData("data.txt");
 
-        var titleclasses = document.getElementsByClassName("rnJPEn");
-        for (var i = 0; i < titleclasses.length; i ++){
-            titleclasses[i].innerHTML = nameJP + ":" + nameEn;
+        function getTxtData(datapath){
+            var req = new XMLHttpRequest();
+
+            req.open("get", datapath, true);
+            req.send(null);
+            req.onload = function(){
+                var texts = req.responseText.split("\n");
+                
+                var namesJP = texts[0].split(",");
+                var namesEn = texts[1].split(",");
+                var alterNames = texts[2].split(",");
+                var formulae = texts[3].split(",");
+                var structures = texts[4].split(",");
+                var msds = texts[5].split(",");
+                var places = texts[6].split(",");
+                var GHS1s = texts[7].split(",");
+                var GHS2s = texts[8].split(",");
+                var GHS3s = texts[9].split(",");
+                var placeFigures = texts[10].split(",");
+
+                var nameJP = namesJP[query];
+                var nameEn = namesEn[query];
+                var alterName = alterNames[query];
+                var formula = formulae[query];
+                var structure = structures[query];
+                var msds = msds[query]
+                var place = places[query]
+                var placeFigure = placeFigures[query];
+                var GHS = [GHS1s[query], GHS2s[query], GHS3s[query]];
+
+                var titleclasses = document.getElementsByClassName("rnJPEn");
+                for (var i = 0; i < titleclasses.length; i ++){
+                    titleclasses[i].innerHTML = nameJP + ":" + nameEn;
+                }
+                for (var i = 1; i <= 3; i++){
+                    document.getElementById("GHS" + i).innerHTML = GHS[i-1];
+                }
+
+                document.getElementById("pageTitle").innerHTML = nameJP + "：構造式に基づく試薬管理システム";
+                document.getElementById("alter").innerHTML = "<b>別名</b> : " + alterName;
+                document.getElementById("fml").innerHTML = "<b>示性式</b> : " + formula;
+                document.getElementById("placeText").innerHTML = "<b>" + place + "</b>";
+                document.getElementById("picstruc").src = "images/" + structure;
+                document.getElementById("placeFig").src = "images/" + placeFigure;
+                document.getElementById("MSDS").href = msds;
+            }
         }
-
-        document.getElementById("pageTitle").innerHTML = nameJP + "：構造式に基づく試薬管理システム";
-        document.getElementById("alter").innerHTML = "<b>別名</b> : " + alterName;
-        document.getElementById("fml").innerHTML = "<b>示性式</b> : " + formula;
-        document.getElementById("placeText").innerHTML = "<b>" + place + "</b>";
-        document.getElementById("picstruc").src = structure;
-        document.getElementById("MSDS").href = msds;
 
     </script>
 </body>
