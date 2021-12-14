@@ -2,6 +2,7 @@
 	display : grid;
 	grid-template-areas : "h1 h2";
 	grid-template-column : 1fr 1fr;
+	background-color : #1289ab;
 }
 
 #header h1{
