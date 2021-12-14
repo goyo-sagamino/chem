@@ -5,20 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="commonStyle.css">
-    <title>メタノール：構造式に基づく試薬管理システム</title>
+    <title id = "pageTitle"></title>
 </head>
 <body>
     <div id = "header">
         <h1>試薬の使用登録｜</h1>
-        <h2><?php echo 'メタノールあああ'; ?>:methanol</h2>
+        <h2 class = "rnJPEn"></h2>
     </div>
 
     <div class = "container">
-        <div class = "leftside"></div>
+        <div id = "leftside" class = "sideSpace"></div>
 
-        <div class = "main">
+        <div id = "main">
             <div id = "menu">
-                <a id = "MSDS" href="http://www.st.rim.or.jp/~shw/MSDS/13405350.pdf">MSDS</a>
+                <a id = "MSDS">MSDS</a>
                 <a id = "suppliers" href="">Suppliers</a>
                 <a id = "reagents" href="">試薬一覧</a>
                 <a id = "return" href="">構造認識に戻る</a>
@@ -28,13 +28,13 @@
                 <div id = "structure">
                     <div class = "image">
                         <div class = "marginLeft"></div>
-                        <img src="methanol.PNG" alt="NoImage">
+                        <img alt= "NoImage" id = "picstruc">
                         <div class = "marginRight"></div>
                     </div>
 
-                    <h2 class = "titles">メタノール:methanol</h2>
-                    <p><b>IUPAC名</b> : メチルアルコール</p>
-                    <p><b>示性式</b> : CH<sub>3</sub>OH</p>
+                    <h2 class = "titles rnJPEn"></h2>
+                    <p id = "alter"></p>
+                    <p id = "fml"></p>
                 </div>
         
                 <div id = "registration">
@@ -47,7 +47,12 @@
 
                 <div id = "place">
                     <h2 class = "titles">保管場所</h2>
-                    <p><b>2203室A13-1"有機溶媒"</b></p>
+                    <p id = "placeText"></p>
+                    <div class = "image">
+                        <div class = "marginLeft"></div>
+                        <img alt= "NoImage" id = "placeFig">
+                        <div class = "marginRight"></div>
+                    </div>
                 </div>
             </div>
         
@@ -55,17 +60,75 @@
                 <div id = "GHS">
                     <h2 class = "titles">GHS分類</h2>
                     <h3>物理化学的危険性</h3>
+                    <p id = "GHS1"></p>
                     <h3>健康に対する有害性</h3>
+                    <p id = "GHS2"></p>
                     <h3>環境に対する有害性</h3>
+                    <p id = "GHS3"></p>
                 </div>
                 
                 <div id = "properties">
                     <h2 class = "titles">物理・化学的性質</h2>
+                    <p id = "aaa"></p>
                 </div>
             </div>
         </div>
 
-        <div class = "rightside"></div>
+        <div id = "rightside" class = "sideSpace"></div>
     </div>
+    <script type = "text/javascript">
+        var query = location.search.split("=")[1];
+
+        getTxtData("data.txt");
+
+        function getTxtData(datapath){
+            var req = new XMLHttpRequest();
+
+            req.open("get", datapath, true);
+            req.send(null);
+            req.onload = function(){
+                var texts = req.responseText.split("\n");
+                
+                var namesJP = texts[0].split(",");
+                var namesEn = texts[1].split(",");
+                var alterNames = texts[2].split(",");
+                var formulae = texts[3].split(",");
+                var structures = texts[4].split(",");
+                var msds = texts[5].split(",");
+                var places = texts[6].split(",");
+                var GHS1s = texts[7].split(",");
+                var GHS2s = texts[8].split(",");
+                var GHS3s = texts[9].split(",");
+                var placeFigures = texts[10].split(",");
+
+                var nameJP = namesJP[query];
+                var nameEn = namesEn[query];
+                var alterName = alterNames[query];
+                var formula = formulae[query];
+                var structure = structures[query];
+                var msds = msds[query]
+                var place = places[query]
+                var placeFigure = placeFigures[query];
+                var GHS = [GHS1s[query], GHS2s[query], GHS3s[query]];
+
+                var titleclasses = document.getElementsByClassName("rnJPEn");
+                for (var i = 0; i < titleclasses.length; i ++){
+                    titleclasses[i].innerHTML = nameJP + ":" + nameEn;
+                }
+                for (var i = 1; i <= 3; i++){
+                    document.getElementById("GHS" + i).innerHTML = GHS[i-1];
+                }
+
+                document.getElementById("pageTitle").innerHTML = nameJP + "：構造式に基づく試薬管理システム";
+                document.getElementById("alter").innerHTML = "<b>別名</b> : " + alterName;
+                document.getElementById("fml").innerHTML = "<b>示性式</b> : " + formula;
+                document.getElementById("placeText").innerHTML = "<b>" + place + "</b>";
+                document.getElementById("picstruc").src = "images/" + structure;
+                document.getElementById("placeFig").src = "images/" + placeFigure;
+                document.getElementById("MSDS").href = msds;
+            }
+        }
+
+    </script>
 </body>
 </html>

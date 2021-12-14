@@ -4,13 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="commonStyle.css">
+    <title>試薬使用登録|構造認識画面</title>
 </head>
 <body>
-    <div>Teachable Machine Image Model</div>
-    <button type="button" onclick="init()">Start</button>
-    <div id="webcam-container"></div>
-    <div id="label-container"></div>
+    <div id = "header">
+        <h1>試薬の使用登録｜</h1>
+        <h2>構造認識画面</h2>
+    </div>
+
+    <div class = "container">
+        <div id = "leftside" class = "sideSpace"></div>
+
+        <div id = "main">
+            <div id = "menu">
+                <a id = "MSDS">MSDS</a>
+                <a id = "suppliers" href="">Suppliers</a>
+                <a id = "reagents" href="">試薬一覧</a>
+                <a id = "return" href="">構造認識に戻る</a>
+            </div>
+
+            <h1>構造認識</h1>
+            <div>startボタンを押して，検索したい分子の構造式をカメラの前にかざしてください</div>
+            
+            <button type="button" onclick="init()">Start</button>
+            <div id="webcam-container"></div>
+            <div id="label-container"></div>
+        </div>
+
+        <div id = "rightside" class = "sideSpace"></div>
+    </div>
+    
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
     <script type="text/javascript">
@@ -63,6 +87,10 @@
                 const classPrediction =
                     prediction[i].className + ": " + prediction[i].probability.toFixed(2);
                 labelContainer.childNodes[i].innerHTML = classPrediction;
+
+                if (prediction[i].probability.toFixed(3) > 0.999 && i !== 0){
+                    window.location.href = 'reagents.html?id=' + (i - 1);
+                }
             }
         }
     </script>    

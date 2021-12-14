@@ -1,8 +1,14 @@
+body{
+	margin : 0;
+}
+
 #header{
 	display : grid;
 	grid-template-areas : "h1 h2";
 	grid-template-column : 1fr 1fr;
-	background-color : #1289ab;
+	background-color : #016789;
+	color : #fff;
+	margin : 0;
 }
 
 #header h1{
@@ -18,6 +24,10 @@
 	display : grid;
 	grid-template-areas : "leftside main rightside";
 	grid-template-columns : 1fr 3fr 1fr;
+}
+
+.sideSpace{
+	background-color : #ddd;
 }
 
 .titles{
@@ -44,7 +54,6 @@
 }
 
 #structure{
-	border : solid 1px #000000;
 	text-align : center;
 }
 
@@ -58,7 +67,7 @@
 	text-align : center;
 }
 
-.container .main{
+.container #main{
 	border-left : solid 1px #000000;
 	border-right : solid 1px #000000;
 }
